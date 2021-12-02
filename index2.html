@@ -70,7 +70,32 @@ footernote {
     <!-- Start of body -->
     <h2><u>Code</u></h2>
 	<h3><u>Merging DataSets across several years</u></h3>
+	<p>
+		import pandas as pd
 
+		#vars
+		year = 2006
+		file = 'ny_rentdata_'
+		f_type = '.csv'
+
+		#dataframe initialization
+		df = pd.read_csv(file + str(year) + f_type)
+		df.rename(columns = {'0 BR':'0_BR_'+str(year), '1 BR':'1_BR_'+str(year),'2 BR':'2_BR_'+str(year),'3 BR':'3_BR_'+str(year),
+		'4 BR':'4_BR_'+str(year),'Est. Population':'Est.Pop_'+str(year)}, inplace = True)
+		year += 1
+
+
+		#merge loop
+		while (year < 2021):
+		tmp = pd.read_csv(file + str(year) + f_type)
+		tmp.rename(columns = {'0 BR':'0_BR_'+str(year), '1 BR':'1_BR_'+str(year),'2 BR':'2_BR_'+str(year),'3 BR':'3_BR_'+str(year),
+		'4 BR':'4_BR_'+str(year),'Est. Population':'Est.Pop_'+str(year)}, inplace = True)
+		df = pd.merge(df, tmp, how = 'outer', on = 'County')
+		year += 1
+
+		df.to_csv('ny_rentdata_merged-v2.csv')
+		#df
+	</p>
 
 		<dd> <a href="/gentrification/index.html">back</a></dd>  
 	
