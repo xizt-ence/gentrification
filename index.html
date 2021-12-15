@@ -54,12 +54,25 @@ footernote {
 }
 
 .inner-content {
-  padding: 0px 80px 40px 40px;
+  padding: 0px 0px 40px 40px;
 }
 
 .editsection {
 	display: none;
 }
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    float: left;
+    width: 49.5%;
+    padding: 2px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+} 
 </style>
 </head>
 <body>
@@ -69,6 +82,14 @@ footernote {
 
     <!-- Start of body -->
     <h2><u>A Study of Gentrification</u></h2>
+    <div class="row">
+        <div class="column">
+            <img src="images/dtxe.rent2br.png" alt="Snow" width="400" height="415">
+        </div>
+        <div class="column">
+            <img src="images/dtxe.hpi.png" alt="Snow" width="400" height="415">
+        </div>
+    </div>
     <img src="images/dtxe.rent2br.png" alt="stuff" width="700" height="415">
     <h3><u>Introduction</u></h3>
     <p>
